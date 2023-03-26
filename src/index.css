@@ -3,3 +3,19 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.text-color {
+   @apply text-veryDarkBlue-2 dark:text-white;
+}
+
+.bg-color {
+   @apply bg-veryLightGray dark:bg-veryDarkBlue-1;
+}
+
+.bg-color-nav {
+   @apply bg-white dark:bg-darkBlue;
+}
+
+.padding-x {
+   @apply px-[20px] md:px-[80px];
+}

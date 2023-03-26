@@ -1,9 +1,14 @@
 import React from 'react';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+import RootElement from './components/RootElement';
+
+const router = createBrowserRouter([
+   {
+      path: '/',
+      element: <RootElement />,
+   },
+]);
 
 export default function App() {
-   return (
-      <h1 className="h-screen flex justify-center items-center font-nunito font-extraBold text-5xl text-white bg-veryDarkBlue-1">
-         Welcome
-      </h1>
-   );
+   return <RouterProvider router={router} />;
 }
