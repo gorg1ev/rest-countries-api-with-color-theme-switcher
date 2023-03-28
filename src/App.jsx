@@ -1,11 +1,18 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
-import RootElement from './components/RootElement';
+import RootElement from './routes/RootElement';
+import Home, { loader as formLoader } from './routes/Home';
+import { ContextProvider } from './context/context';
 
 const router = createBrowserRouter([
    {
       path: '/',
-      element: <RootElement />,
+      element: (
+         <ContextProvider>
+            <RootElement />
+         </ContextProvider>
+      ),
+      children: [{ index: true, element: <Home />, loader: formLoader }],
    },
 ]);
 
