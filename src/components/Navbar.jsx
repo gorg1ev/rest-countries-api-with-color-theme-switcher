@@ -7,7 +7,7 @@ export default function Navbar() {
    const { theme, darkModeHandler, defaultTitle } = useContext(context);
 
    return (
-      <nav className="text-color bg-color-component shadow">
+      <nav className="text-color bg-color-component shadow ease-in-out duration-300">
          <div className="max-w-[1440px] mx-auto padding-x py-[40px] w-full flex flex-row justify-between items-center md:py-[30px] ">
             <Link to="/">
                <h1

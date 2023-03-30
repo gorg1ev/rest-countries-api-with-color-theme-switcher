@@ -1,12 +1,9 @@
 import React from 'react';
-import { useLoaderData } from 'react-router-dom';
 import Card from './Card';
 
-export default function Cards() {
-   const data = useLoaderData();
-
+export default function Cards({ data }) {
    return (
-      <ul className="flex flex-wrap justify-center  gap-[50px]">
+      <ul className="w-auto flex flex-wrap justify-center gap-[50px]">
          {data.map((country) => (
             <li key={country.name.common}>
                <Card data={country} />

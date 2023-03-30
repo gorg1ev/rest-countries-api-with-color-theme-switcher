@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Form, useNavigate } from 'react-router-dom';
 import ChevronDown from '../assets/ChevronDown';
 import context from '../context/context';
@@ -7,11 +7,17 @@ export default function DropdownMenu() {
    const { dropdownMenuTitle, toggleList, toggleMenuHandler, changeTitle } =
       useContext(context);
    const navigate = useNavigate();
+   useEffect(() => {
+      const url = window.location.href;
+      const region = new URL(url).search;
+
+      region.includes('?region') && changeTitle(region.slice(8));
+   }, []);
 
    return (
-      <div className="w-[245px] flex flex-col gap-5">
+      <div className="relative w-[245px]">
          <div
-            className="flex justify-between items-center shadow rounded-md text-color bg-color-component cursor-pointer px-[25px] py-5 md:px-[30px]"
+            className="flex justify-between items-center shadow rounded-md text-color bg-color-component cursor-pointer px-[25px] py-5 md:px-[30px] ease-in-out duration-300"
             onClick={toggleMenuHandler}
          >
             <h4>{dropdownMenuTitle}</h4>
@@ -19,13 +25,14 @@ export default function DropdownMenu() {
          </div>
          {toggleList && (
             <Form
-               id="form-id"
                defaultValue="form-dropdown"
-               className="flex flex-col gap-[15px] px-[25px] py-5 md:px-[30px] text-color bg-color-component shadow rounded-md"
+               className="flex flex-col gap-[15px] px-[25px] py-5 md:px-[30px] text-color bg-color-component shadow rounded-md absolute top-[70px] left-0 right-0 ease-in-out duration-300"
                role="dropdown menu"
                onClick={(e) => {
-                  changeTitle(e);
-                  navigate(`?${e.target.name}=${e.target.value}`);
+                  if (e.target.closest('button')) {
+                     navigate(`?${e.target.name}=${e.target.value}`);
+                     changeTitle(e.target.value);
+                  }
                }}
             >
                <button

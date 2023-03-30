@@ -1,4 +1,4 @@
-import React, { useState, createContext } from 'react';
+import React, { useState, createContext, useMemo } from 'react';
 
 const context = createContext();
 
@@ -13,9 +13,8 @@ export function ContextProvider(props) {
       document.documentElement.classList.toggle('dark');
    }
 
-   function changeTitle(e) {
-      if (e.target.closest('button'))
-         setDropdownMenuTitle(e.target.textContent);
+   function changeTitle(region) {
+      setDropdownMenuTitle(region[0].toUpperCase() + region.slice(1));
 
       toggleMenuHandler();
    }

@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootElement from './routes/RootElement';
 import Home, { loader as formLoader } from './routes/Home';
 import { ContextProvider } from './context/context';
+import Error from './components/Error';
 
 const router = createBrowserRouter([
    {
@@ -12,7 +13,13 @@ const router = createBrowserRouter([
             <RootElement />
          </ContextProvider>
       ),
-      children: [{ index: true, element: <Home />, loader: formLoader }],
+      children: [
+         {
+            index: true,
+            element: <Home />,
+            loader: formLoader,
+         },
+      ],
    },
 ]);
 
