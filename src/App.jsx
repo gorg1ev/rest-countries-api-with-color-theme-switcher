@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import RootElement from './routes/RootElement';
 import Home, { loader as formLoader } from './routes/Home';
 import { ContextProvider } from './context/context';
-import Error from './components/Error';
+import Country, { loader as countryLoader } from './routes/Country';
 
 const router = createBrowserRouter([
    {
@@ -19,6 +19,7 @@ const router = createBrowserRouter([
             element: <Home />,
             loader: formLoader,
          },
+         { path: ':id', element: <Country />, loader: countryLoader },
       ],
    },
 ]);

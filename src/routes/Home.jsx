@@ -17,7 +17,7 @@ export async function loader({ request }) {
    if (name) extend = `/name/${name}`;
    if (region) extend = `/region/${region}`;
 
-   const res = await fetch(api + extend);
+   const res = await fetch(api + extend, { cache: 'no-cache' });
 
    if (!res.ok)
       return {

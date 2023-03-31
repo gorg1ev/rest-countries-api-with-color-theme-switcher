@@ -1,13 +1,19 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Card from './Card';
 
 export default function Cards({ data }) {
    return (
       <ul className="w-auto flex flex-wrap justify-center gap-[50px]">
          {data.map((country) => (
-            <li key={country.name.common}>
-               <Card data={country} />
-            </li>
+            <Link
+               to={`${country.name.common.toLowerCase()}`}
+               key={country.name.common}
+            >
+               <li>
+                  <Card data={country} />
+               </li>
+            </Link>
          ))}
       </ul>
    );
