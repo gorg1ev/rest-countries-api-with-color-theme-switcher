@@ -126,6 +126,9 @@ export default function Country() {
                   <h6 className="font-semiBold text-[18px]">
                      Border Countries:{' '}
                   </h6>
+                  {countryFullName.length === 0 && (
+                     <span className="font-light">No borders</span>
+                  )}
                   {countryFullName.map((country) => (
                      <span
                         key={country}
