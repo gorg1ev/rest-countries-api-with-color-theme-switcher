@@ -1,4 +1,4 @@
-import React, { useState, createContext, useMemo } from 'react';
+import React, { useState, createContext } from 'react';
 
 const context = createContext();
 
@@ -11,6 +11,11 @@ export function ContextProvider(props) {
    function darkModeHandler() {
       setTheme((prev) => !prev);
       document.documentElement.classList.toggle('dark');
+      localStorage.setItem('theme', !theme);
+   }
+
+   function getThemeFromLocalStorage() {
+      return JSON.parse(localStorage.getItem('theme'));
    }
 
    function changeTitle(region) {
@@ -29,12 +34,14 @@ export function ContextProvider(props) {
 
    const data = {
       theme,
+      setTheme,
       darkModeHandler,
       dropdownMenuTitle,
       changeTitle,
       defaultTitle,
       toggleList,
       toggleMenuHandler,
+      getThemeFromLocalStorage,
    };
 
    return <context.Provider value={data}>{props.children}</context.Provider>;
