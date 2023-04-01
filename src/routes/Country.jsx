@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useLoaderData } from 'react-router-dom';
+import { useNavigate, useLoaderData, Link, useParams } from 'react-router-dom';
 import { ArrowLeft } from '../assets';
 
 export async function loader({ params }) {
@@ -16,6 +16,7 @@ export default function Country() {
    const loaderData = useLoaderData();
    const [countryFullName, setCountryFullName] = useState([]);
    const navigate = useNavigate();
+   const param = useParams;
 
    useEffect(() => {
       async function fetchBorders() {
@@ -36,7 +37,7 @@ export default function Country() {
       }
 
       fetchBorders();
-   }, []);
+   }, [param().id]);
 
    function goBack() {
       navigate(-1);
@@ -130,12 +131,13 @@ export default function Country() {
                      <span className="font-light">No borders</span>
                   )}
                   {countryFullName.map((country) => (
-                     <span
+                     <Link
+                        to={`/${country.toLowerCase()}`}
                         key={country}
                         className="font-light px-[25px] py-[10px] bg-color-component shadow-md rounded-md"
                      >
                         {country}
-                     </span>
+                     </Link>
                   ))}
                </div>
             </div>
