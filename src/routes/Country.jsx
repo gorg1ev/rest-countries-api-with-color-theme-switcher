@@ -75,13 +75,13 @@ export default function Country() {
                         </span>
                      </h6>
                      <h6 className="font-semiBold text-[18px]">
-                        Population:
+                        Population:{' '}
                         <span className="font-light">
                            {loaderData[0].population.toLocaleString()}
                         </span>
                      </h6>
                      <h6 className="font-semiBold text-[18px]">
-                        Region:
+                        Region:{' '}
                         <span className="font-light">
                            {loaderData[0].region}
                         </span>
